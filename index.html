@@ -63,7 +63,7 @@
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
-          outputData.innerHTML += code.data+"<br/>";
+          outputData.innerText = code.data;
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
