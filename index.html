@@ -8,11 +8,11 @@
 <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Use jsQR decoder library</h1>
-  <a id="githubLink" href="https://github.com/cozmo/jsQR">View documentation on Github</a>
+  <p>Use jsQR decoder library</p>
   <p>Pure JavaScript QR code decoding library.</p>
   <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
   <canvas id="canvas" hidden></canvas>
+  <div><input type="button" value="Scan!" id="Btn"></div>
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
@@ -40,7 +40,7 @@
       video.srcObject = stream;
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.play();
-      requestAnimationFrame(tick);
+  //    requestAnimationFrame(tick);
     });
 
     function tick() {
@@ -70,8 +70,12 @@
           outputData.parentElement.hidden = true;
         }
       }
-      requestAnimationFrame(tick);
+//      requestAnimationFrame(tick);
     }
+  let btn = document.getElementById("Btn");
+  btn.addEventListener("click",() =>  {
+    requestAnimationFrame(tick);
+  })
   </script>
 </body>
 </html>

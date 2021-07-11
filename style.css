@@ -26,6 +26,7 @@ h1 {
 
 #canvas {
   width: 100%;
+  position: absolute;
 }
 
 #output {
