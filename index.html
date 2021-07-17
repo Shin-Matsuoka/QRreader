@@ -11,7 +11,7 @@
   <p>Use jsQR decoder library</p>
   <p>Pure JavaScript QR code decoding library.</p>
   <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
-  <div><input type="button" value="Scan!" id="Btn"><input type="button" value="close" id="closeBtn"></div>
+  <div><input type="button" value="Scan!" id="Btn"></div>
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
@@ -80,12 +80,14 @@ function tick() {
 let videoStreamingF = true;
   let btn = document.getElementById("Btn");
   btn.addEventListener("click",() =>  {
-    videoStreamingF = true;
-    requestAnimationFrame(tick);
-  })
-  let closeBtn = document.getElementById("closeBtn");
-  closeBtn.addEventListener("click",() => {
-    videoStreamingF = false;
+    if(!videoStreamingF)  {
+      videoStreamingF = true;
+      btn.value = "Close";
+      requestAnimationFrame(tick);
+    } else  {
+      videoStreamingF = false;
+      btn.value = "Scan";
+    }
   })
   </script>
 </body>
