@@ -47,6 +47,11 @@
       loadingMessage.hidden = true;
         canvasElement.hidden = false;
         outputContainer.hidden = false;
+
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
       requestAnimationFrame(tick);
       return;
       loadingMessage.innerText = "⌛ Loading video..."
