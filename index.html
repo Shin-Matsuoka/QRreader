@@ -44,6 +44,9 @@
     });
 
     function tick() {
+      loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
       requestAnimationFrame(tick);
       return;
       loadingMessage.innerText = "⌛ Loading video..."
