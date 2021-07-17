@@ -40,7 +40,7 @@
       video.srcObject = stream;
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.play();
-      requestAnimationFrame(tick);
+ //     requestAnimationFrame(tick);
     });
 
     function tick() {
@@ -54,7 +54,7 @@
         canvasElement.width = video.videoWidth;
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height); 
-/*        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
           inversionAttempts: "dontInvert",
         });
         if (code) {
@@ -68,7 +68,7 @@
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
-        }*/
+        }
       }
       requestAnimationFrame(tick);
     }
