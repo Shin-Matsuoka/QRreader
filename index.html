@@ -72,6 +72,8 @@ function tick() {
   }
   if(videoStreamingF) {
     requestAnimationFrame(tick);
+  } else  {
+    canvasElement.hidden = true;
   }
 }
 
