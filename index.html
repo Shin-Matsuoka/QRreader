@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>jsQR Demo</title>
   <script src="./jsQR.js"></script>
-  <script src="./ZXing.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
 </head>
@@ -28,7 +27,7 @@
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
 
- //   document.getElementById("video2").appendChild(video);
+    document.getElementById("video2").appendChild(video);
     let strm;
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -47,7 +46,6 @@
       video.play();
  //     requestAnimationFrame(tick);
     });
-    const reader = new ZXing.BrowserMultiFormatReader();
 
 function tick() {
   loadingMessage.innerText = "⌛ Loading video..."
@@ -63,9 +61,6 @@ function tick() {
     var code = jsQR(imageData.data, imageData.width, imageData.height, {
       inversionAttempts: "dontInvert",
     });
-    reader.decodeFromImage(undefined,"video").then(res => {
-      console.log(res);
-    });
     if (code) {
       drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
       drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
@@ -77,8 +72,6 @@ function tick() {
     } else {
       outputMessage.hidden = false;
       outputData.parentElement.hidden = true;
- //     if(result)
- //       console.log(result.text);
     }
   }
   if(videoStreamingF) {
@@ -88,7 +81,7 @@ function tick() {
   }
 }
 
-let videoStreamingF = true;
+let videoStreamingF = false;
   let btn = document.getElementById("Btn");
   btn.addEventListener("click",() =>  {
     if(!videoStreamingF)  {
@@ -98,6 +91,9 @@ let videoStreamingF = true;
     } else  {
       videoStreamingF = false;
       btn.value = "Scan";
+      strm.getTracks().forEach(track => {
+        track.stop();
+      })
     }
   })
   </script>
