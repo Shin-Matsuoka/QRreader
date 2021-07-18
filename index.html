@@ -16,6 +16,7 @@
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
     <canvas id="canvas" hidden></canvas>
+    <video id="video2"></video>
   </div>
   <script>
     var video = document.createElement("video");
@@ -35,11 +36,15 @@
       canvas.stroke();
     }
 
+    let video2 = document.getElementById("video2");
+    
     // Use facingMode: environment to attemt to get the front camera on phones
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-      video.srcObject = stream;
-      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-      video.play();
+//      video.srcObject = stream;
+      video2.srcObject = stream;
+ //     video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video2.setAttribute("playsinline", true); // required to tell iOS safari
+      video2.play();
  //     requestAnimationFrame(tick);
     });
 
