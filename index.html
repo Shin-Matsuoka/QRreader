@@ -63,7 +63,7 @@ function tick() {
     var code = jsQR(imageData.data, imageData.width, imageData.height, {
       inversionAttempts: "dontInvert",
     });
-    reader.decodeFromImage(imageData.data,(res) => {
+    reader.decodeFromImage(imageData.data).then(res => {
       console.log(res);
     });
     if (code) {
