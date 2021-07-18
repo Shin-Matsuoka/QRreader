@@ -63,7 +63,9 @@ function tick() {
     var code = jsQR(imageData.data, imageData.width, imageData.height, {
       inversionAttempts: "dontInvert",
     });
-    let result = await reader.decodeFromImage(imageData.data);
+    reader.decodeFromImage(imageData.data,(res) => {
+      console.log(res);
+    });
     if (code) {
       drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
       drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
