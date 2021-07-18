@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>jsQR Demo</title>
   <script src="./jsQR.js"></script>
-  <script src="./ZXing.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
 </head>
@@ -47,7 +46,6 @@
       video.play();
  //     requestAnimationFrame(tick);
     });
-    const reader = new ZXing.BrowserMultiFormatReader();
 
 function tick() {
   loadingMessage.innerText = "⌛ Loading video..."
@@ -63,9 +61,6 @@ function tick() {
     var code = jsQR(imageData.data, imageData.width, imageData.height, {
       inversionAttempts: "dontInvert",
     });
-    reader.decodeFromImage(undefined,"video").then(res => {
-      console.log(res);
-    });
     if (code) {
       drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
       drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
@@ -77,8 +72,6 @@ function tick() {
     } else {
       outputMessage.hidden = false;
       outputData.parentElement.hidden = true;
- //     if(result)
- //       console.log(result.text);
     }
   }
   if(videoStreamingF) {
