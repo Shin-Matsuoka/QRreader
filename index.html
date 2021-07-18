@@ -40,7 +40,11 @@
 
     // Use facingMode: environment to attemt to get the front camera on phones
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+<<<<<<< HEAD
       strm = stream;
+=======
+      strm = strea;
+>>>>>>> 47209400c206a274014ff23cc38c26adc422cfb7
       video.srcObject = stream;
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.play();
