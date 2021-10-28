@@ -13,9 +13,9 @@
   <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
   <div><input type="button" value="Scan!" id="Btn"></div>
   <div id="output" hidden>
+    <canvas id="canvas" hidden></canvas>
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
-    <canvas id="canvas" hidden></canvas>
   </div>
   <div id="video2"></div>
   <script>
@@ -62,7 +62,7 @@ function tick() {
     var code = jsQR(imageData.data, imageData.width, imageData.height, {
       inversionAttempts: "dontInvert",
     });
-    if (code) {
+    if (code) { console.log(code);
       drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
       drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
       drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
